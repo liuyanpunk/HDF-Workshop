@@ -6,20 +6,15 @@
   - Extracting JSON elements we are interested in
   - Splitting JSON into smaller fragments
   - Writing JSON to File System
-- [Lab 3](#lab-3) - MiNiFi
-  - Enable Site2Site in NiFi
-  - Designing the MiNiFi Flow
-  - Preparing the flow
-  - Running MiNiFi
-- [Lab 4](#lab-4) - Kafka Basics
+- [Lab 3](#lab-4) - Kafka Basics
   - Creating a topic
   - Producing data
   - Consuming data
-- [Lab 5](#lab-5) - Integrating Kafka with NiFi
+- [Lab 4](#lab-5) - Integrating Kafka with NiFi
   - Creating the Kafka topic
   - Adding the Kafka producer processor
   - Verifying the data is flowing
-- [Lab 6](#lab-6) - Integrating the Schema Registry
+- [Lab 5](#lab-6) - Integrating the Schema Registry
   - Creating the Kafka topic
   - Adding the Meetup Avro Schema
   - Sending Avro data to Kafka
