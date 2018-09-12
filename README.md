@@ -6,15 +6,15 @@
   - Extracting JSON elements we are interested in
   - Splitting JSON into smaller fragments
   - Writing JSON to File System
-- [Lab 3](#lab-4) - Kafka Basics
+- [Lab 3](#lab-3) - Kafka Basics
   - Creating a topic
   - Producing data
   - Consuming data
-- [Lab 4](#lab-5) - Integrating Kafka with NiFi
+- [Lab 4](#lab-4) - Integrating Kafka with NiFi
   - Creating the Kafka topic
   - Adding the Kafka producer processor
   - Verifying the data is flowing
-- [Lab 5](#lab-6) - Integrating the Schema Registry
+- [Lab 5](#lab-5) - Integrating the Schema Registry
   - Creating the Kafka topic
   - Adding the Meetup Avro Schema
   - Sending Avro data to Kafka
@@ -175,98 +175,8 @@ To get started we need to consume the data from the Meetup RSVP stream, extract 
 
 ------------------
 
+
 # Lab 3
-
-  ![Image](https://github.com/apsaltis/HDF-Workshop/raw/master/lab3.png)
-  A template for this flow can be found [here](https://raw.githubusercontent.com/apsaltis/HDF-Workshop/master/templates/MiNiFi_Flow.xml)
-
-
-## Getting started with MiNiFi ##
-
-In this lab, we will learn how to configure MiNiFi to send data to NiFi:
-
-* Setting up the Flow for NiFi
-* Setting up the Flow for MiNiFi
-* Preparing the flow for MiNiFi
-* Configuring and starting MiNiFi
-* Enjoying the data flow!
-
-
-## Setting up the Flow for NiFi
-**NOTE:** Before starting NiFi we need to enable Site-to-Site communication. To do that we will use Ambari to update the required configuration. In Ambari the below property values can be found at ````http://<EC2_NODE>:8080/#/main/services/NIFI/configs```` .
-
-* Change:
-  ````
-			nifi.remote.input.socket.port=
-
-  ````
-  To
-  ```
-   		nifi.remote.input.socket.port=10000
-
-  ```
-* Restart NiFi via Ambari
-
-
-Now we should be ready to create our flow. To do this do the following:
-
-1.	The first thing we are going to do is setup an Input Port. This is the port that MiNiFi will be sending data to. To do this drag the Input Port icon to the canvas and call it "From MiNiFi".
-
-2. Now that the Input Port is configured we need to have somewhere for the data to go once we receive it. In this case we will keep it very simple and just log the attributes. To do this drag the Processor icon to the canvas and choose the LogAttribute processor.
-
-3.	Now that we have the input port and the processor to handle our data, we need to connect them.
-
-4.  We are now ready to build the MiNiFi side of the flow. To do this do the following:
-	* Add a GenerateFlowFile processor to the canvas (don't forget to configure the properties on it)
-	* Add a Remote Processor Group to the canvas
-
-           For the URL copy and paste the URL for the NiFi UI from your browser
-   * Connect the GenerateFlowFile to the Remote Process Group
-
-5. The next step is to generate the flow we need for MiNiFi. To do this do the following steps:
-
-   * Create a template for MiNiFi
-   * Select the GenerateFlowFile, the NiFi Flow Remote Processor Group, and the Connection between them (these are the only things needed for MiNiFi)
-   * Select the "Create Template" button from the toolbar
-   * Choose a name for your template
-
-
-7. Now we need to download the template
-8. Now SCP the template you downloaded to the ````/tmp```` directory on your EC2 instance. If you are using Windows you will need to download WinSCP (https://winscp.net/eng/download.php)
-9.  We are now ready to setup MiNiFi. However before doing that we need to convert the template to YAML format which MiNiFi uses. To do this we need to do the following:
-
-    * Navigate to the minifi-toolkit directory (/usr/hdf/current/minifi-toolkit-0.4.0)
-    * Transform the template that we downloaded using the following command:
-
-      ````sudo bin/config.sh transform <INPUT_TEMPLATE> <OUTPUT_FILE>````
-
-      For example:
-
-      ````sudo bin/config.sh transform /temp/MiNiFi_Flow.xml config.yml````
-
-10. Next copy the ````config.yml```` to the ````minifi-0.4.0/conf```` directory. That is the file that MiNiFi uses to generate the nifi.properties file and the flow.xml.gz for MiNiFi.
-
-11. That is it, we are now ready to start MiNiFi. To start MiNiFi from a command prompt execute the following:
-
-  ```
-  cd /usr/hdf/current/minifi-0.4.0
-  sudo bin/minifi.sh start
-  tail -f logs/minifi-app.log
-  ```
-
-You should be able to now go to your NiFi flow and see data coming in from MiNiFi.
-
-You may tail the log of the MiNiFi application by
-   ```
-   tail -f /usr/hdf/current/minifi/minifi-0.2.0/logs/minifi-app.log
-   ```
-If you see error logs such as "the remote instance indicates that the port is not in a valid state",
-it is because the Input Port has not been started.
-Start the port and you will see messages being accumulated in its downstream queue.
-
-------------------
-
-# Lab 4
 
 ## Kafka Basics
 In this lab we are going to explore creating, writing to and consuming Kafka topics. This will come in handy when we later integrate Kafka with NiFi and Streaming Analytics Manager.
@@ -318,7 +228,7 @@ bin/kafka-console-producer.sh --broker-list sandbox.hortonworks.com:6667 --topic
 
 ------------------
 
-# Lab 5
+# Lab 4
 
 ## Integrating Kafka with NiFi
 1. Creating the topic
@@ -364,7 +274,7 @@ bin/kafka-console-producer.sh --broker-list sandbox.hortonworks.com:6667 --topic
 
 ------------------
 
-# Lab 6
+# Lab 5
 
 ## Integrating the Schema Registry
 1. Creating the topic
