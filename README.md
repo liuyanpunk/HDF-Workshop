@@ -41,7 +41,7 @@ Credentials will be provided for these services by the instructor:
 
 NOTE: The following instructions are for using Putty. You can also use other popular SSH tools such as [MobaXterm](https://mobaxterm.mobatek.net/) or [SmarTTY](http://smartty.sysprogs.com/)
 
-- Right click to download [this ppk key](https://raw.githubusercontent.com/liuyanpunk/HDF-Workshop/master/HDF-Workshop-BKK.ppk) > Save link as > save to Downloads folder
+- Right click to download [this ppk key](https://github.com/liuyanpunk/HDF-Workshop/blob/master/HDF34ShanghaiWorkshop.ppk) > Save link as > save to Downloads folder
 - Use putty to connect to your node using the ppk key:
   - Connection > SSH > Auth > Private key for authentication > Browse... > Select hdf-workshop.ppk
 ![Image](https://raw.githubusercontent.com/apsaltis/HDF-Workshop/master/putty.png)
