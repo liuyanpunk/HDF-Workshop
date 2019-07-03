@@ -206,7 +206,7 @@ In this lab we are going to explore creating, writing to and consuming Kafka top
   - Step 1: Open a second terminal to your EC2 node and navigate to the Kafka directory
   - In one shell window connect a consumer:
   ````
- bin/kafka-console-consumer.sh --zookeeper localhost:2181 --from-beginning --topic first-topic
+ bin/kafka-console-consumer.sh --bootstrap-server demo.hortonworks.com:6667 --from-beginning --topic first-topic
 ````
 
     Note: using –from-beginning will tell the broker we want to consume from the first message in the topic. Otherwise it will be from the latest offset.
