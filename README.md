@@ -265,7 +265,7 @@ bin/kafka-console-producer.sh --broker-list demo.hortonworks.com:6667 --topic fi
 4. In a terminal window to your EC2 node and navigate to the Kafka directory and connect a consumer to the ````meetup_rsvp_raw```` topic:
 
     ````
-    bin/kafka-console-consumer.sh --zookeeper localhost:2181 --from-beginning --topic meetup_rsvp_raw
+    bin/kafka-console-consumer.sh --bootstrap-server demo.hortonworks.com:6667 --from-beginning --topic meetup_rsvp_raw
     ````
 
 
@@ -368,7 +368,7 @@ bin/kafka-console-producer.sh --broker-list demo.hortonworks.com:6667 --topic fi
 5. In a terminal window to your EC2 node and navigate to the Kafka directory and connect a consumer to the ````meetup_rsvp_avro```` topic:
 
     ````
-    bin/kafka-console-consumer.sh --zookeeper localhost:2181 --from-beginning --topic meetup_rsvp_avro
+    bin/kafka-console-consumer.sh --bootstrap-server demo.hortonworks.com:6667 --from-beginning --topic meetup_rsvp_avro
     ````
 
 
