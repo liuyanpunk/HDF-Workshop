@@ -134,13 +134,13 @@ To get started we need to consume the data from the Meetup RSVP stream, extract 
 
     group.country	$.group.group_country
 
-    group.name		$.group.group_name
+    group.name    $.group.group_name
 
-    venue.lat		  $.venue.lat
+    venue.lat     $.venue.lat
 
     venue.lon     $.venue.lon
 
-    venue.name		$.venue.venue_name
+    venue.name    $.venue.venue_name
     ```
   - Step 4: Add a SplitJson processor and configure the JsonPath Expression to be ```$.group.group_topics ```
   - Step 5: Add a ReplaceText processor and configure the Search Value to be ```([{])([\S\s]+)([}])``` and the Replacement Value to be
